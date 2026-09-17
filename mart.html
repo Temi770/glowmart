@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GlowMart | Online Mart</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="mart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">GlowMart</div>
+
+        <!-- Hamburger icon (mobile only) -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <!-- Navigation links -->
+        <nav class="nav-links">
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+            <a href="#"><i class="fas fa-store"></i> Shop</a>
+            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+            <button class="btn"><i class="fas fa-shopping-cart"></i> Order Now</button>
+        </nav>
+    </header>
+
+    <!-- Floating Cart Icon (only one counter now) -->
+    <div class="cart-icon">
+        🛒 <span id="cart-count">0</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Welcome to GlowMart</h2>
+        <p>Your One‑Stop Shop for Accessories & Skincare</p>
+        <button class="btn"><i class="fa fa-shopping-bag"></i> Shop Now</button>
+        <button class="btn btn-outline"><i class="fa fa-list"></i> Browse Categories</button>
+    </section>
+
+    <!-- Collections -->
+    <section class="collections">
+        <div class="card">
+            <h3>Fashion Accessories</h3>
+            <p>Shop trendy jewelry & perfumes</p>
+        </div>
+        <div class="card">
+            <h3>Beauty & Skincare</h3>
+            <p>Glow with premium products</p>
+        </div>
+        <div class="card">
+            <h3>Groceries & More</h3>
+            <p>Fresh foodstuffs & essentials</p>
+        </div>
+        <div class="card">
+            <h3>Men’s Essentials</h3>
+            <p>Watches, wallets & colognes</p>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <h2 style="text-align:center; font-family:'Great Vibes', cursive; color:#f8b4d9;">Featured Products</h2>
+        <p style="text-align:center; color:#555;">Best Deals Just for You</p>
+        <div class="products">
+            <div class="product-card">
+                <img src="designer bag.png" alt="Designer Handbag">
+                <h3>Designer Handbag</h3>
+                <p>₦7,500</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="organic facecream.png" alt="Organic Face Cream">
+                <h3>Organic Face Cream</h3>
+                <p>₦3,000</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="gold wristwatch.png" alt="Gold Wristwatch">
+                <h3>Gold Wristwatch</h3>
+                <p>₦12,000</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="beaded necklace.png" alt="Beaded Necklace">
+                <h3>Beaded Necklace</h3>
+                <p>₦4,500</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers -->
+    <section class="offers">
+        <div class="offer-banner">
+            <h2>Special Offers</h2>
+            <p>Get the Best Discounts Today!</p>
+            <button class="btn">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <p>"GlowMart has the best accessories! My order arrived quickly and the quality is amazing."</p>
+                <h4>- Sarah O.</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"I love their skincare products. Affordable and effective — I’ll definitely shop again."</p>
+                <h4>- Michael K.</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"Fast delivery and great customer service. Highly recommend GlowMart to friends."</p>
+                <h4>- Aisha B.</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <h2>Get in Touch</h2>
+        <form id="contact-form">
+            <div class="form-row">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <p id="form-success" class="success-message" style="display:none;">✅ Thank you! Your message has been sent.
+            </p>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Fast Delivery • Quality Products • 24/7 Support</p>
+        <p>Follow us on Instagram | Facebook | WhatsApp</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Hamburger menu toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Floating Cart Counter
+        let cartCount = 0;
+        const cartDisplay = document.querySelector('.cart-icon #cart-count');
+        const productButtons = document.querySelectorAll('.product-card .btn');
+
+        productButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                cartCount++;
+                cartDisplay.textContent = cartCount;
+            });
+        });
+
+        // Contact Form Validation
+        const contactForm = document.getElementById('contact-form');
+        const successMsg = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = this.name.value.trim();
+            const email = this.email.value.trim();
+            const message = this.message.value.trim();
+
+            if (!name || !email || !message) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/;
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            successMsg.style.display = "block";
+            this.reset();
+
+            setTimeout(() => {
+                successMsg.style.display = "none";
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
